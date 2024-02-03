@@ -47,10 +47,30 @@ function App() {
       // setCountries(filteredArr);
     }
 
+    const styles = {
+      container: {
+          'display': "flex",
+          'flex-wrap': "wrap",
+          'align-items': "center",
+          'justify-content': "center",
+          'flex-direction':'column',
+      },
+      card: {
+        'display': "flex",
+        'flex-wrap': "wrap",
+        'align-items': "center",
+        'justify-content': "center",
+    },
+    
+    };
+
   return (
-    <div className="countryCard">
+    <div className="countryCard" style={styles.container}>
       <Searchbar handleSerach={handleSerach}/>
-      {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
+      <div className="countryCard" style={styles.card}>
+          {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
+      </div>
+      
     </div>
   );
 }

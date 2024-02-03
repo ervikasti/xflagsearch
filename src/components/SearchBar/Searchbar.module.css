@@ -7,10 +7,5 @@
 }
 
 .searchbox{
-    margin: 1rem;
-    padding: 1rem;
-    border: 1px solid gray;
-    display: flex;
-    min-width: 30%;
-    max-width: 100%;
+   
 }

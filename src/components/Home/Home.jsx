@@ -2,12 +2,6 @@
 export default function Home({countries}) {
 
     const styles = {
-        container: {
-            'display': "flex",
-            'flex-wrap': "wrap",
-            'align-items': "center",
-            'justify-content': "center",
-        },
         card:{
             width: '200px',
             border: '1px solid #ccc',
@@ -28,7 +22,7 @@ export default function Home({countries}) {
 
 
     return(
-        <div className="countryCard" style={styles.container}>
+        <div className="countryCard">
            {countries.map(country => (
             <div key={country.cca3} className='countryCard' style={styles.card}>
                 <img style={styles.img} src={country.flags.png} alt={`Flag of ${country.name.common}`}/>
