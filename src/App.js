@@ -47,10 +47,10 @@ function App() {
     }
 
   return (
-    <div>
+    <div className={styles.container}>
       <Searchbar handleSerach={handleSerach}/>
-      <div className={styles.container}>
-      {filterData.length? <Home  countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
+      <div className={styles.card}>
+      {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
       </div>
       
     </div>
