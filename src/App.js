@@ -33,7 +33,7 @@ function App() {
         let x = (val.name.common).toLowerCase();
         text = text.toLowerCase();
 
-        if(x.startsWith(text)){
+        if(x.includes(text)){
           return true;
         }else{
           return false;
