@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Home from "./components/Home/Home";
 import Searchbar from "./components/SearchBar/Searchbar";
 import styles from "./App.module.css";
-import stylestwo from "./App.module.css";
+import "../src/components/Home/Home.css";
 
 function App() {
 
@@ -50,8 +50,8 @@ function App() {
   return (
     <div className={styles.container}>
       <Searchbar handleSerach={handleSerach}/>
-      <div className={stylestwo.countryCard}>
-      {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
+      <div className='countryCard'>
+        {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
       </div>
       
     </div>
