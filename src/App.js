@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Home from "./components/Home/Home";
-import Searchbar from "./components/SearchBar/Searchbar";
-import styles from "./App.module.css";
+// import Searchbar from "./components/SearchBar/Searchbar";
+// import styles from "./App.module.css";
 import "./App.css";
 
 function App() {
@@ -66,7 +66,7 @@ function App() {
 
   return (
     <div className="countryCard" style={styles.container}>
-      <Searchbar handleSerach={handleSerach}/>
+      <input type="text" onChange={handleSerach} placeholder="Search for countries..."/>
       <div className="countryCard" style={styles.card}>
           {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
       </div>
