@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Home from "./components/Home/Home";
 import Searchbar from "./components/SearchBar/Searchbar";
 import styles from "./App.module.css";
-import "../src/components/Home/Home.css";
+import "./App.css";
 
 function App() {
 
