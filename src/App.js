@@ -48,12 +48,9 @@ function App() {
     }
 
   return (
-    <div className={styles.container}>
+    <div className="countryCard">
       <Searchbar handleSerach={handleSerach}/>
-      <div className='countryCard'>
-        {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
-      </div>
-      
+      {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
     </div>
   );
 }
