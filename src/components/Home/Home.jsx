@@ -28,7 +28,7 @@ export default function Home({countries}) {
 
 
     return(
-        <div className="countryCard" style={styles.container}>
+        <div style={styles.container}>
            {countries.map(country => (
             <div key={country.cca3} className='countryCard' style={styles.card}>
                 <img style={styles.img} src={country.flags.png} alt={`Flag of ${country.name.common}`}/>

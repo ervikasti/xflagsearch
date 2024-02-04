@@ -65,9 +65,9 @@ function App() {
     };
 
   return (
-    <div className="countryCard" style={styles.container}>
+    <div style={styles.container}>
       <input type="text" onChange={handleSerach} placeholder="Search for countries..."/>
-      <div className="countryCard" style={styles.card}>
+      <div style={styles.card}>
           {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
       </div>
       
