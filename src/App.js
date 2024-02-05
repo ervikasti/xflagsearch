@@ -9,6 +9,8 @@ function App() {
   const [countries,setCountries] = useState([]);
   const [filterData, setFilteredData] = useState([]);
   const [search,setSearch] = useState('');
+    // Timeout Id
+    const [timeoutId, setTimeoutId] = useState(null);
 
     useEffect( ()=> {
         fetch("https://restcountries.com/v3.1/all")
@@ -18,22 +20,36 @@ function App() {
     });
 
     // handle the onChange of the search box
-    const handleSearch =(e)=>{
+    // const handleSearch =(e)=>{
         
-        // setSearch(e.target.value);
-        setSearch(e.target.value);
-        // filterCountry(e.target.value);
+    //     // setSearch(e.target.value);
+    //     setSearch(e.target.value);
+    //     // filterCountry(e.target.value);
        
-    }
+    // }
+
+    const debounceSearch = (event, debounceTimeout) => {
+      let text = event.target.value;
+      // [IF true] Clear timoutId
+      if (debounceTimeout) {
+        clearTimeout(debounceTimeout);
+      }
+      // Set timeout & make the API call
+      let timeOut = setTimeout(() => {
+        performSearch(text);
+      }, 500);
+      // Update set timeoutId
+      setTimeoutId(timeOut);
+    };
     
-    useEffect(()=>{
+     function performSearch(text){
         const copyCountries = [...countries];
   
         // console.log(copyCountries);
         const filteredArr = copyCountries.filter( (val) => {
   
           let x = (val.name.common).toLowerCase();
-          let text = search.toLowerCase();
+          text = text.toLowerCase();
   
           if(x.includes(text)){
             return true;
@@ -46,7 +62,7 @@ function App() {
         setFilteredData(filteredArr);
         // setCountries(filteredArr);
       }
-    ,[search]);
+
     
 
     const styles = {
@@ -68,7 +84,7 @@ function App() {
 
   return (
     <div style={styles.container}>
-      <input type="text" onChange={handleSearch} placeholder="Search for countries..."/>
+      <input type="text" onChange={(e) => debounceSearch(e, timeoutId)} placeholder="Search for countries..."/>
       <div style={styles.card}>
           {filterData.length? <Home countries={filterData}/>: (!search.length && <Home countries={countries}/>) }
       </div>
