@@ -18,34 +18,36 @@ function App() {
     });
 
     // handle the onChange of the search box
-    const handleSerach =(e)=>{
+    const handleSearch =(e)=>{
         
         // setSearch(e.target.value);
-        filterCountry(e.target.value);
         setSearch(e.target.value);
+        // filterCountry(e.target.value);
+       
     }
     
-
-    const filterCountry =(text)=>{
-      const copyCountries = [...countries];
-
-      // console.log(copyCountries);
-      const filteredArr = copyCountries.filter( (val) => {
-
-        let x = (val.name.common).toLowerCase();
-        text = text.toLowerCase();
-
-        if(x.includes(text)){
-          return true;
-        }else{
-          return false;
-        }
-      });
-
-      // console.log(filteredArr);
-      setFilteredData(filteredArr);
-      // setCountries(filteredArr);
-    }
+    useEffect(()=>{
+        const copyCountries = [...countries];
+  
+        // console.log(copyCountries);
+        const filteredArr = copyCountries.filter( (val) => {
+  
+          let x = (val.name.common).toLowerCase();
+          let text = search.toLowerCase();
+  
+          if(x.includes(text)){
+            return true;
+          }else{
+            return false;
+          }
+        });
+  
+        // console.log(filteredArr);
+        setFilteredData(filteredArr);
+        // setCountries(filteredArr);
+      }
+    ,[search]);
+    
 
     const styles = {
       container: {
@@ -66,9 +68,9 @@ function App() {
 
   return (
     <div style={styles.container}>
-      <input type="text" onChange={handleSerach} placeholder="Search for countries..."/>
+      <input type="text" onChange={handleSearch} placeholder="Search for countries..."/>
       <div style={styles.card}>
-          {filterData.length? <Home countries={filterData}/>: (search.length?null:<Home countries={countries}/>) }
+          {filterData.length? <Home countries={filterData}/>: (!search.length && <Home countries={countries}/>) }
       </div>
       
     </div>
